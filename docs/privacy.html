@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy - Voice Clipboard</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.7; }
+  h1 { font-size: 28px; border-bottom: 2px solid #4A90D9; padding-bottom: 8px; }
+  h2 { margin-top: 32px; color: #333; }
+  .meta { color: #888; font-size: 13px; }
+  code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+  .box { background: #f0f7ff; border-left: 4px solid #4A90D9; padding: 12px 16px; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy for Voice Clipboard</h1>
+<p class="meta">Last updated: April 18, 2026</p>
+
+<div class="box">
+<strong>Summary:</strong> Voice Clipboard does not collect, store, transmit, or share any personal data. All voice recognition happens locally in your browser via the Web Speech API, and recognized text is inserted directly into the focused input field. No data leaves your device through this extension.
+</div>
+
+<h2>1. Data We Collect</h2>
+<p><strong>None.</strong> Voice Clipboard does not collect any personally identifiable information, browsing history, user content, authentication credentials, location, financial data, health information, or any other user data.</p>
+
+<h2>2. Microphone Access</h2>
+<p>Voice Clipboard requests microphone access solely to enable voice-to-text input. The microphone stream is passed directly to your browser's built-in Web Speech API (<code>window.SpeechRecognition</code>). We do not record, store, or transmit audio.</p>
+
+<h2>3. Speech Recognition</h2>
+<p>Voice Clipboard uses the Web Speech API provided by your browser. On Google Chrome, speech recognition may be processed by Google's servers as part of the browser platform itself. This processing is governed by Google's own policies, not by Voice Clipboard. Voice Clipboard has no access to, and does not log, the audio stream or the recognition results beyond inserting the final text into the text field you have focused.</p>
+
+<h2>4. Local Storage</h2>
+<p>Voice Clipboard does not use <code>chrome.storage</code>, cookies, IndexedDB, or any persistent storage. All runtime state (e.g. selected language, floating button position) exists only in memory and is discarded when the tab is closed.</p>
+
+<h2>5. Remote Code</h2>
+<p>Voice Clipboard does not fetch, execute, or evaluate any remote code. All extension logic is bundled inside the installed package.</p>
+
+<h2>6. Third-Party Services</h2>
+<p>Voice Clipboard does not communicate with any third-party server, analytics service, advertising network, or tracking provider.</p>
+
+<h2>7. Permissions Justification</h2>
+<ul>
+  <li><strong><code>&lt;all_urls&gt;</code> content script match</strong>: Required so users can dictate text into any website's input field (email clients, search bars, messaging apps, docs, forms, etc.). This is the core functionality of the extension.</li>
+</ul>
+
+<h2>8. Children's Privacy</h2>
+<p>Voice Clipboard is not directed at children under 13. It does not knowingly collect personal information from children.</p>
+
+<h2>9. Changes to This Policy</h2>
+<p>If this policy changes, the updated version will be published at this same URL with a new "Last updated" date. Material changes will also be reflected in the Chrome Web Store listing.</p>
+
+<h2>10. Contact</h2>
+<p>For questions about this privacy policy or the extension, please open an issue at:<br>
+<a href="https://github.com/LordOfWins/voice-clipboard-ext/issues">https://github.com/LordOfWins/voice-clipboard-ext/issues</a></p>
+
+</body>
+</html>
