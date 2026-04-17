@@ -1,58 +1,58 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <style>
         body {
-            width: 300px;
-            padding: 20px;
-            font-family: 'Segoe UI', sans-serif;
-            background: #1a1a2e;
-            color: #e0e0e0;
+            width: 280px;
+            padding: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
+            color: #333;
+            margin: 0;
         }
 
-        h2 {
-            color: #e94560;
-            margin-top: 0;
+        h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
         }
 
         p {
-            font-size: 13px;
-            line-height: 1.6;
+            margin: 5px 0;
+            line-height: 1.5;
         }
 
-        .shortcut {
-            background: #0f3460;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 13px;
+        kbd {
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 1px 5px;
+            font-size: 11px;
         }
 
-        ul {
-            padding-left: 18px;
-            font-size: 13px;
+        .ver {
+            color: #999;
+            font-size: 11px;
+            margin-top: 12px;
         }
 
-        li {
-            margin-bottom: 6px;
+        .lang {
+            color: #4A90D9;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <h2>🎙️ Voice Clipboard</h2>
-    <p>모든 웹사이트에서 음성을 텍스트로 변환하고 원클릭 복사!</p>
-    <p><strong>사용법:</strong></p>
-    <ul>
-        <li>웹페이지 우측 하단의 패널에서 <b>🎤 시작</b> 클릭</li>
-        <li>말하면 실시간으로 텍스트 표시</li>
-        <li><b>📋 복사</b> 클릭하면 클립보드에 복사</li>
-        <li>어디든 <b>Ctrl+V</b>로 붙여넣기</li>
-    </ul>
-    <p>단축키: <span class="shortcut">Ctrl+Shift+V</span> 로 녹음 토글</p>
-    <p style="color:#888; font-size:11px; margin-top:16px;">v1.0.0 | Chrome Web Speech API 사용 (비용 없음)</p>
+    <h3>🎤 Voice Clipboard</h3>
+    <p>1. Click any text field</p>
+    <p>2. Click the 🎤 button or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd></p>
+    <p>3. Speak and text appears instantly</p>
+    <p>4. Auto-stops after 4s of silence</p>
+    <p>5. Hold 🎤 for 1s to change language</p>
+    <p class="lang">🌐 KO · EN · JA · ZH · ES · FR · DE</p>
+    <p class="ver">v6.7.0</p>
 </body>
 
 </html>

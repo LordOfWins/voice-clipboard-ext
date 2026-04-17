@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Voice Clipboard - Microphone Permission</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 420px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .granted {
+            color: #68D391;
+        }
+
+        .denied {
+            color: #FC8181;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>🎤 Voice Clipboard</h1>
+        <p>Microphone access is required for voice input.<br>Please click <strong>"Allow"</strong> in the browser popup.</p>
+        <div class="status" id="status">Requesting permission...</div>
+    </div>
+    <script src="permission.js"></script>
+</body>
+
+</html>

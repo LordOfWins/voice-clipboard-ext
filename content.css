@@ -1,239 +1,163 @@
-/* ===== Voice Clipboard 플로팅 패널 ===== */
-#vc-panel {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 380px;
-    max-height: 500px;
-    background: #1a1a2e;
-    border: 1px solid #16213e;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    z-index: 2147483647;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    color: #e0e0e0;
+/* Voice Clipboard v6.7 */
+#vc-float {
+    all: initial !important;
+    display: none !important;
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    pointer-events: auto !important;
+    transition: opacity 0.2s ease !important;
+    opacity: 0 !important;
 }
 
-#vc-panel.vc-minimized {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#vc-float.vc-show {
+    display: flex !important;
+    opacity: 1 !important;
 }
 
-#vc-panel.vc-minimized #vc-header,
-#vc-panel.vc-minimized #vc-body,
-#vc-panel.vc-minimized #vc-footer {
-    display: none;
+#vc-mic {
+    all: initial !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    line-height: 32px !important;
+    text-align: center !important;
+    background: linear-gradient(135deg, #4A90D9, #357ABD) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+    pointer-events: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    touch-action: none !important;
 }
 
-#vc-panel.vc-minimized #vc-mini-icon {
-    display: flex;
+#vc-mic:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-#vc-mini-icon {
-    display: none;
-    font-size: 24px;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 헤더 */
-#vc-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    background: #16213e;
-    cursor: grab;
-    user-select: none;
-}
-
-#vc-header:active {
-    cursor: grabbing;
-}
-
-#vc-header-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #e94560;
-}
-
-#vc-header-btns {
-    display: flex;
-    gap: 8px;
-}
-
-#vc-header-btns button {
-    background: none;
-    border: none;
-    color: #a0a0b0;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
-
-#vc-header-btns button:hover {
-    background: rgba(233, 69, 96, 0.2);
-    color: #e94560;
-}
-
-/* 본문 (텍스트 표시 영역) */
-#vc-body {
-    flex: 1;
-    padding: 16px;
-    overflow-y: auto;
-    min-height: 80px;
-    max-height: 300px;
-}
-
-#vc-text-display {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #e0e0e0;
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 40px;
-}
-
-#vc-text-display.vc-placeholder {
-    color: #555;
-    font-style: italic;
-}
-
-#vc-interim {
-    color: #888;
-    font-style: italic;
-    border-left: 2px solid #e94560;
-    padding-left: 8px;
-    margin-top: 8px;
-}
-
-/* 푸터 (버튼들) */
-#vc-footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    border-top: 1px solid #16213e;
-    flex-wrap: wrap;
-}
-
-.vc-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-#vc-mic-btn {
-    background: #e94560;
-    color: white;
-}
-
-#vc-mic-btn:hover {
-    background: #c73650;
-}
-
-#vc-mic-btn.vc-recording {
-    background: #ff6b6b;
-    animation: vc-pulse 1.5s infinite;
+#vc-mic.vc-rec {
+    background: linear-gradient(135deg, #e53e3e, #c53030) !important;
+    animation: vc-pulse 1.2s ease-in-out infinite !important;
 }
 
 @keyframes vc-pulse {
 
     0%,
     100% {
-        box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.4);
+        box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.5) !important;
     }
 
     50% {
-        box-shadow: 0 0 0 10px rgba(233, 69, 96, 0);
+        box-shadow: 0 0 0 10px rgba(229, 62, 62, 0) !important;
     }
 }
 
-#vc-copy-btn {
-    background: #0f3460;
-    color: #e0e0e0;
+#vc-lang-ring {
+    all: initial !important;
+    display: none !important;
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
 }
 
-#vc-copy-btn:hover {
-    background: #1a4a7a;
+#vc-lang-ring.vc-show {
+    display: block !important;
 }
 
-#vc-clear-btn {
-    background: transparent;
-    color: #888;
-    border: 1px solid #333;
+.vc-lang-btn {
+    all: initial !important;
+    position: absolute !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    border: 2px solid #4A90D9 !important;
+    background: #fff !important;
+    color: #333 !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    text-align: center !important;
+    line-height: 32px !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    margin-left: -18px !important;
+    margin-top: -18px !important;
+    opacity: 0 !important;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
-#vc-clear-btn:hover {
-    background: #333;
-    color: #e0e0e0;
+.vc-lang-btn:hover {
+    background: #4A90D9 !important;
+    color: #fff !important;
 }
 
-#vc-lang-select {
-    background: #0f3460;
-    color: #e0e0e0;
-    border: 1px solid #16213e;
-    border-radius: 8px;
-    padding: 6px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    outline: none;
+.vc-lang-btn.vc-lang-active {
+    background: #4A90D9 !important;
+    color: #fff !important;
+    border-color: #2B6CB0 !important;
 }
 
-/* 복사 성공 토스트 */
+#vc-preview {
+    all: initial !important;
+    display: none !important;
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    padding: 8px 14px !important;
+    border-radius: 8px !important;
+    max-width: 600px !important;
+    min-width: 120px !important;
+    max-height: 200px !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow-y: auto !important;
+    line-height: 1.5 !important;
+    pointer-events: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+#vc-preview.vc-show {
+    display: block !important;
+}
+
 #vc-toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #00b894;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    z-index: 2147483647;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    font-family: 'Segoe UI', sans-serif;
+    all: initial !important;
+    display: none !important;
+    position: fixed !important;
+    bottom: 24px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 2147483647 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: #fff !important;
+    font-size: 13px !important;
+    padding: 8px 18px !important;
+    border-radius: 20px !important;
+    pointer-events: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    transition: opacity 0.3s ease !important;
 }
 
 #vc-toast.vc-show {
-    opacity: 1;
-    transform: translateY(0);
+    display: block !important;
+    opacity: 1 !important;
 }
 
-/* 스크롤바 */
-#vc-body::-webkit-scrollbar {
-    width: 6px;
-}
-
-#vc-body::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-#vc-body::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 3px;
+#vc-mic-iframe {
+    display: none !important;
 }

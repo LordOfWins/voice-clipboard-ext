@@ -1,16 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Voice Clipboard",
-    "version": "1.0.0",
-    "description": "음성을 텍스트로 변환하고 플로팅 패널에서 원클릭 복사",
-    "permissions": [
-        "activeTab"
-    ],
-    "icons": {
-        "32": "icons/icon32.png",
-        "48": "icons/icon48.png",
-        "128": "icons/icon128.png"
-    },
+    "version": "6.7.0",
+    "description": "Click any text field, speak, and your words appear instantly.",
     "content_scripts": [
         {
             "matches": [
@@ -25,11 +17,31 @@
             "run_at": "document_idle"
         }
     ],
+    "background": {
+        "service_worker": "background.js"
+    },
     "action": {
         "default_popup": "popup.html",
         "default_icon": {
-            "32": "icons/icon32.png",
-            "48": "icons/icon48.png"
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
         }
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "permission.html",
+                "permission.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
     }
 }
