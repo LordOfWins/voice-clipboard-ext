@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Voice Clipboard",
+    "version": "1.0.0",
+    "description": "음성을 텍스트로 변환하고 플로팅 패널에서 원클릭 복사",
+    "permissions": [
+        "activeTab"
+    ],
+    "icons": {
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "32": "icons/icon32.png",
+            "48": "icons/icon48.png"
+        }
+    }
+}

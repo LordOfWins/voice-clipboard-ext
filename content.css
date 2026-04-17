@@ -1,0 +1,239 @@
+/* ===== Voice Clipboard 플로팅 패널 ===== */
+#vc-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 380px;
+    max-height: 500px;
+    background: #1a1a2e;
+    border: 1px solid #16213e;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    z-index: 2147483647;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    color: #e0e0e0;
+}
+
+#vc-panel.vc-minimized {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#vc-panel.vc-minimized #vc-header,
+#vc-panel.vc-minimized #vc-body,
+#vc-panel.vc-minimized #vc-footer {
+    display: none;
+}
+
+#vc-panel.vc-minimized #vc-mini-icon {
+    display: flex;
+}
+
+#vc-mini-icon {
+    display: none;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 헤더 */
+#vc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #16213e;
+    cursor: grab;
+    user-select: none;
+}
+
+#vc-header:active {
+    cursor: grabbing;
+}
+
+#vc-header-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e94560;
+}
+
+#vc-header-btns {
+    display: flex;
+    gap: 8px;
+}
+
+#vc-header-btns button {
+    background: none;
+    border: none;
+    color: #a0a0b0;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+#vc-header-btns button:hover {
+    background: rgba(233, 69, 96, 0.2);
+    color: #e94560;
+}
+
+/* 본문 (텍스트 표시 영역) */
+#vc-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    min-height: 80px;
+    max-height: 300px;
+}
+
+#vc-text-display {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 40px;
+}
+
+#vc-text-display.vc-placeholder {
+    color: #555;
+    font-style: italic;
+}
+
+#vc-interim {
+    color: #888;
+    font-style: italic;
+    border-left: 2px solid #e94560;
+    padding-left: 8px;
+    margin-top: 8px;
+}
+
+/* 푸터 (버튼들) */
+#vc-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid #16213e;
+    flex-wrap: wrap;
+}
+
+.vc-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#vc-mic-btn {
+    background: #e94560;
+    color: white;
+}
+
+#vc-mic-btn:hover {
+    background: #c73650;
+}
+
+#vc-mic-btn.vc-recording {
+    background: #ff6b6b;
+    animation: vc-pulse 1.5s infinite;
+}
+
+@keyframes vc-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(233, 69, 96, 0);
+    }
+}
+
+#vc-copy-btn {
+    background: #0f3460;
+    color: #e0e0e0;
+}
+
+#vc-copy-btn:hover {
+    background: #1a4a7a;
+}
+
+#vc-clear-btn {
+    background: transparent;
+    color: #888;
+    border: 1px solid #333;
+}
+
+#vc-clear-btn:hover {
+    background: #333;
+    color: #e0e0e0;
+}
+
+#vc-lang-select {
+    background: #0f3460;
+    color: #e0e0e0;
+    border: 1px solid #16213e;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 복사 성공 토스트 */
+#vc-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #00b894;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 2147483647;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#vc-toast.vc-show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 스크롤바 */
+#vc-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+#vc-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#vc-body::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
